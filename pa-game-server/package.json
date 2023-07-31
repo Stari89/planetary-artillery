@@ -9,9 +9,10 @@
   "author": "Damjan Kovačič",
   "license": "ISC",
   "dependencies": {
+    "pa-game-shared": "file:../pa-game-shared",
+    "reflect-metadata": "^0.1.13",
     "uuidv4": "^6.2.13",
-    "ws": "^8.13.0",
-    "pa-game-shared": "file:../pa-game-shared"
+    "ws": "^8.13.0"
   },
   "devDependencies": {
     "@types/node": "^20.4.2",

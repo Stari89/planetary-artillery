@@ -5,7 +5,7 @@ import http from 'http';
 import webSocket from 'ws';
 import { uuid } from 'uuidv4';
 
-const port = 3000;
+const port = 6662;
 const app = express();
 const wss = new webSocket.Server({ port: 6661 });
 

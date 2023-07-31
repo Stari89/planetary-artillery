@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "uuidv4": "^6.2.13",
-    "ws": "^8.13.0"
+    "ws": "^8.13.0",
+    "pa-game-shared": "file:../pa-game-shared"
   },
   "devDependencies": {
     "@types/node": "^20.4.2",

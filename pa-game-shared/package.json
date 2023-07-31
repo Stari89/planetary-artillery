@@ -1,0 +1,23 @@
+{
+  "name": "pa-game-shared",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "start": "tsc-watch --onSuccess \"npm run build\"",
+    "build": "npm run clean && npx tsc",
+    "clean": "del-cli --force ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Damjan Kovačič",
+  "license": "ISC",
+  "devDependencies": {
+    "del-cli": "^5.0.0",
+    "tsc-watch": "^6.0.4",
+    "typescript": "^5.1.6"
+  }
+}

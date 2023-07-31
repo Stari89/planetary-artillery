@@ -18,13 +18,12 @@ wss.on('connection', (ws) => {
 	clients.set(ws, metadata);
 
 	ws.on('message', (data) => {
-		const message = JSON.parse(data.toString());
 		const metadata = clients.get(ws);
-
-		console.log(message, metadata);
+		console.log(metadata, data.toString());
 	});
 
 	ws.on('close', () => {
+		console.log('close');
 		clients.delete(ws);
 	});
 });

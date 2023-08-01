@@ -1,4 +1,4 @@
-import StringGenerator from "../utils/string-generator";
+import { StringGenerator } from "../utils";
 import { ResolvedType } from "./resolved-type";
 
 export class Container extends Map {

@@ -1,1 +1,1 @@
-export * from './ws-message-handler';
+export * from './string-generator';

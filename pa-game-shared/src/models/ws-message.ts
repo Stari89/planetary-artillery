@@ -12,3 +12,7 @@ export interface WsMessage<T extends keyof MessageTypeMap> {
 	payload: MessageTypeMap[T];
 	messageType: T;
 }
+
+export type WsMessageHandlers = {
+	[K in keyof MessageTypeMap]?: (payload: MessageTypeMap[K]) => void;
+};

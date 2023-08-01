@@ -1,4 +1,4 @@
-export default class StringGenerator {
+export class StringGenerator {
 	public static generateRandomString(length: number): string {
 		let result = '';
 		const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

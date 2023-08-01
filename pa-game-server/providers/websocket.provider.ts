@@ -1,16 +1,15 @@
 import { Injectable } from 'pa-game-shared/src/ioc/injector';
-import { handleMessage } from 'pa-game-shared/src/utils';
 import { v4 } from 'uuid';
 import webSocket from 'ws';
-import { wsMessageHandlers } from '../src/ws-message-handlers';
 import { WsMessage } from 'pa-game-shared/src/models';
+import { MessageHandlerProvider } from 'pa-game-shared/src/providers';
 
 @Injectable()
 export class WebsocketProvider {
 	private readonly clients: Map<any, any>;
 	private readonly wss: webSocket.Server;
 
-	constructor() {
+	constructor(private readonly messageHandlerProvider: MessageHandlerProvider) {
 		this.clients = new Map();
 		this.wss = new webSocket.Server({ port: 6661 });
 		this.wss.on('connection', (ws) => {
@@ -20,7 +19,7 @@ export class WebsocketProvider {
 			ws.onmessage = (e) => {
 				const data = e.data;
 				const metadata = this.clients.get(ws);
-				handleMessage(JSON.parse(data.toString()), wsMessageHandlers);
+				this.messageHandlerProvider.handleMessage(JSON.parse(data.toString()));
 			};
 
 			ws.onclose = (e) => {

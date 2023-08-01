@@ -3,7 +3,7 @@ import { WsMessage } from 'pa-game-shared/src/models';
 import { MessageHandlerProvider } from 'pa-game-shared/src/providers';
 
 @Injectable()
-export class WsMessagingProvider {
+export class WsClientMessagingProvider {
 	private readonly ws: WebSocket;
 
 	constructor(private readonly messageHandlerProvider: MessageHandlerProvider) {

@@ -5,7 +5,7 @@ import { WsMessage } from 'pa-game-shared/src/models';
 import { MessageHandlerProvider } from 'pa-game-shared/src/providers';
 
 @Injectable()
-export class WebsocketProvider {
+export class WsServerMessagingProvider {
 	private readonly clients: Map<any, any>;
 	private readonly wss: webSocket.Server;
 

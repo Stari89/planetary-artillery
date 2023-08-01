@@ -1,1 +1,1 @@
-export * from './ws-messaging.provider';
+export * from './ws-client-messaging.provider';

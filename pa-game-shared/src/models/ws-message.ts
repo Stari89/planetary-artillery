@@ -1,17 +1,12 @@
-export interface FooPayload {
-
-}
-
-export interface BarPayload {
-
-}
+import { GameStatePayload, SignInRequestPayload, SignInResponsePayload } from './payloads';
 
 export interface MessageTypeMap {
-	Foo: FooPayload;
-	Bar: BarPayload;
+	GameState: GameStatePayload;
+	SignInRequest: SignInRequestPayload;
+	SignInResponse: SignInResponsePayload;
 }
 
-export abstract class WsMessage<T extends keyof MessageTypeMap> {
+export interface WsMessage<T extends keyof MessageTypeMap> {
 	uuid: string;
 	messageCount: number;
 	payload: MessageTypeMap[T];

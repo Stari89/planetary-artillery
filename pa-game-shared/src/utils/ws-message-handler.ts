@@ -1,21 +1,14 @@
-import { MessageTypeMap, WsMessage } from "../models";
+import { MessageTypeMap, WsMessage } from '../models';
 
-const messageHandlers: {
-	[K in keyof MessageTypeMap]: (payload: MessageTypeMap[K]) => void;
-} = {
-	Foo: (payload) => {
+export type WsMessageHandlers = {
+	[K in keyof MessageTypeMap]?: (payload: MessageTypeMap[K]) => void;
+};
 
-	},
-	Bar: (payload) => {
-
-	}
-}
-
-const handleMessage = <T extends keyof MessageTypeMap>(message: WsMessage<T>) => {
+export const handleMessage = <T extends keyof MessageTypeMap>(message: WsMessage<T>, messageHandlers: WsMessageHandlers) => {
 	const handler = messageHandlers[message.messageType];
 	if (handler) {
 		handler(message.payload);
 	} else {
 		// handle shiettt
 	}
-}
+};

@@ -19,7 +19,7 @@ class ClientApp {
 				console.log('Received game state', payload);
 			},
 			JoinGameResponse(payload) {
-				console.log('Recieved join game response', payload);
+				console.log('Recieved sign in response', payload);
 			},
 		};
 		this.messageHandlerProvider.init(wsMessageHandlers);

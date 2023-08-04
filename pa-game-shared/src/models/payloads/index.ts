@@ -1,2 +1,2 @@
-export * from './game-state-payload';
-export * from './sign-in-payload';
+export * from './game-state.payload';
+export * from './join-game.payload';

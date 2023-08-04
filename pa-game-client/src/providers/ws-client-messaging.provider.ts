@@ -11,6 +11,10 @@ export class WsClientMessagingProvider {
 		this.ws.onmessage = (e) => {
 			const payload = JSON.parse(e.data) as WsMessage<any>;
 			this.messageHandlerProvider.handleMessage(payload);
-		}
+		};
+	}
+
+	sendMessage(message: WsMessage<any>) {
+		this.ws.send(JSON.stringify(message));
 	}
 }

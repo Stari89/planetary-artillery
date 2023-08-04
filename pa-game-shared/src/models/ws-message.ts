@@ -1,9 +1,9 @@
-import { GameStatePayload, SignInRequestPayload, SignInResponsePayload } from './payloads';
+import { GameStatePayload, JoinGameRequestPayload, JoinGameResponsePayload } from './payloads';
 
 export interface MessageTypeMap {
 	GameState: GameStatePayload;
-	SignInRequest: SignInRequestPayload;
-	SignInResponse: SignInResponsePayload;
+	JoinGameRequest: JoinGameRequestPayload;
+	JoinGameResponse: JoinGameResponsePayload;
 }
 
 export interface WsMessage<T extends keyof MessageTypeMap> {
@@ -14,5 +14,5 @@ export interface WsMessage<T extends keyof MessageTypeMap> {
 }
 
 export type WsMessageHandlers = {
-	[K in keyof MessageTypeMap]?: (payload: MessageTypeMap[K]) => void;
+	[K in keyof MessageTypeMap]?: (payload: MessageTypeMap[K], wsClientUuid?: string) => void;
 };

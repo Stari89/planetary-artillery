@@ -1,4 +1,5 @@
 export interface GameStatePayload {
+	instanceUuid: string;
 	state: 'idle' | 'splash' | 'loading' | 'loop';
-	playerCount: number;
+	players: string[];
 }

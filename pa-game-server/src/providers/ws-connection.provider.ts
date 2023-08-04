@@ -25,7 +25,7 @@ export class WsConnectionProvider extends ContainerEventEmitter {
 			};
 
 			ws.onclose = (e) => {
-				this.emit(ContainerEvent.OnClientDisconnected, wsClient);
+				this.emit(ContainerEvent.OnClientDisconnected, wsClient.uuid);
 			};
 		});
 	}

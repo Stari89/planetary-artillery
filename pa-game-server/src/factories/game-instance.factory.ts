@@ -8,9 +8,9 @@ export class GameInstanceFactory {
 		const newInstance: GameInstance = {
 			uuid: v4(),
 			players: [],
-			maxPlayers: 2,
+			maxPlayers: 10,
 			gameState: { status: 'idle' },
-			gameLoopInfo: { dt: NaN, t: performance.now(), breakLoop: false, loopInterval: 1000 },
+			gameLoopInfo: { dt: NaN, t: performance.now(), breakLoop: false, loopInterval: 5000 },
 		};
 		return newInstance;
 	}

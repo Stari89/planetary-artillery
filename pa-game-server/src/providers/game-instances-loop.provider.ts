@@ -1,10 +1,13 @@
 import { ContainerEventEmitter, Injectable } from 'pa-game-shared/src/ioc';
-import { ContainerEvent, OnPlayerWantsJoinGameInstance } from '../events';
+import { ContainerEvent, OnClientDisconnected, OnPlayerWantsJoinGameInstance } from '../events';
 import { GameInstance, Player } from '../models';
 import { GameInstanceFactory } from '../factories';
 
 @Injectable()
-export class GameInstancesLoopProvider extends ContainerEventEmitter implements OnPlayerWantsJoinGameInstance {
+export class GameInstancesLoopProvider
+	extends ContainerEventEmitter
+	implements OnPlayerWantsJoinGameInstance, OnClientDisconnected
+{
 	private readonly instances: GameInstance[] = [];
 
 	constructor(private readonly gameInstanceFactory: GameInstanceFactory) {
@@ -66,5 +69,17 @@ export class GameInstancesLoopProvider extends ContainerEventEmitter implements 
 
 	public onPlayerWantsJoinGameInstance(player: Player): void {
 		this.joinPlayer(player);
+	}
+
+	public onClientDisconnected(uuid: string): void {
+		const instanceIdx = this.instances.findIndex((i) => i.players.some((p) => p.wsClientUuid === uuid));
+		if (instanceIdx < 0) {
+			return;
+		}
+		const playerIdx = this.instances[instanceIdx].players.findIndex((p) => p.wsClientUuid === uuid);
+		this.instances[instanceIdx].players.splice(playerIdx, 1);
+		if (this.instances[instanceIdx].players.length === 0) {
+			this.destroyInstance(this.instances[instanceIdx].uuid);
+		}
 	}
 }
